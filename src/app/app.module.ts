@@ -11,6 +11,7 @@ import { ProdutlosAlertasComponent } from './produtlos-alertas/produtlos-alertas
 import { ProdutosDetalhesComponent } from './produtos-detalhes/produtos-detalhes.component';
 import { CarrinhoComponent } from './carrinho/carrinho.component';
 import { ShippingComponent } from './shipping/shipping.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ShippingComponent } from './shipping/shipping.component';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: ListaProdutoComponent },
       { path: 'produtos/:produtoId', component: ProdutosDetalhesComponent },

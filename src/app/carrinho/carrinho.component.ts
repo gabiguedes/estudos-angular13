@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { CarrinhoService } from '../services/carrinho.service';
 
 @Component({
@@ -8,12 +9,24 @@ import { CarrinhoService } from '../services/carrinho.service';
 })
 export class CarrinhoComponent implements OnInit {
   items = this.carrinhoService.getItems();
-
+  
+  checkoutForm = this.formBuilder.group({
+    nome: '',
+    endereco: ''
+  });
+  
   constructor(
-    private carrinhoService: CarrinhoService
+    private carrinhoService: CarrinhoService,
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(): void {
+    this.items = this.carrinhoService.limparCarrinho();
+    console.warn('Seu pedido foi enviado', this.checkoutForm.value);
+    this.checkoutForm.reset();
   }
 
 }
